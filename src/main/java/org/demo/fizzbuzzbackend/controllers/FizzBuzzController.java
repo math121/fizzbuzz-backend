@@ -1,5 +1,6 @@
 package org.demo.fizzbuzzbackend.controllers;
 
+import org.demo.fizzbuzzbackend.dtos.FizzBuzzDTO;
 import org.demo.fizzbuzzbackend.services.FizzBuzzService;
 import org.demo.fizzbuzzbackend.models.FizzBuzz;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,12 @@ public class FizzBuzzController {
     }
 
     @GetMapping("/{upperLimit}")
-    public List<FizzBuzz> getFizzBuzzNumbers(@PathVariable int upperLimit) {
-        return service.getFizzBuzzNumbers(upperLimit);
+    public List<FizzBuzzDTO> getFizzBuzzNumbers(@PathVariable int upperLimit) {
+        return service.getFizzBuzzNumbers(upperLimit)
+                .stream()
+                .map(el -> new FizzBuzzDTO(el.getNumber(), el.getValue()))
+                .toList();
     }
 
 }
+

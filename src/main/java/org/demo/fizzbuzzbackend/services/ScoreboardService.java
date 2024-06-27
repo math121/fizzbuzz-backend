@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ScoreboardService {
@@ -14,11 +15,18 @@ public class ScoreboardService {
     private ScoreboardRepository repository;
 
     public List<Scoreboard> getScoreboard() {
-        return repository.findAll();
+        return repository.getAllSorted();
     }
 
     public Scoreboard addScoreboard(Scoreboard scoreboard) {
         return repository.save(scoreboard);
     }
 
+    public int updateNameOnScoreboard(Long id, String name) {
+        return repository.updateNameOnScoreboard(id, name);
+    }
+
+    public void deleteScoreboardById(Long id) {
+        repository.deleteById(id);
+    }
 }

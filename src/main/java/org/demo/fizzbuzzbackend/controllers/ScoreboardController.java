@@ -32,4 +32,14 @@ public class ScoreboardController {
         return service.addScoreboard(scoreboard);
     }
 
+    @PatchMapping("/{id}")
+    public int updateNameOnScoreboard(@PathVariable Long id, @RequestParam String name) {
+        return service.updateNameOnScoreboard(id, name);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteScoreboard(@PathVariable Long id) {
+        service.deleteScoreboardById(id);
+    }
+
 }

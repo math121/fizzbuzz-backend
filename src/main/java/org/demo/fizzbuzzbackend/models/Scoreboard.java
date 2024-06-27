@@ -38,4 +38,8 @@ public class Scoreboard {
     public int getScore() {
         return score;
     }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

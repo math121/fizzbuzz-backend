@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: 'postgres:15'
+    container_name: 'fizzbuzz-backend'
+    env_file: .env-postgres
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
+

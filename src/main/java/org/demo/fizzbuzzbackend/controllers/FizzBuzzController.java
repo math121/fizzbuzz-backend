@@ -3,15 +3,13 @@ package org.demo.fizzbuzzbackend.controllers;
 import org.demo.fizzbuzzbackend.dtos.FizzBuzzDTO;
 import org.demo.fizzbuzzbackend.services.FizzBuzzService;
 import org.demo.fizzbuzzbackend.models.FizzBuzz;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/fizzbuzz")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class FizzBuzzController {
 
     private final FizzBuzzService service;

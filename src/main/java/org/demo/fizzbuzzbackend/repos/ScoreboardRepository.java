@@ -1,6 +1,5 @@
 package org.demo.fizzbuzzbackend.repos;
 
-import org.demo.fizzbuzzbackend.models.FizzBuzz;
 import org.demo.fizzbuzzbackend.models.Scoreboard;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,6 @@ public interface ScoreboardRepository extends ListCrudRepository<Scoreboard, Lon
     @Query("UPDATE Scoreboard s SET s.userName = :name WHERE s.id = :id")
     int updateNameOnScoreboard(@Param("id") Long id, @Param("name") String name);
 
-    @Query("SELECT s FROM Scoreboard s ORDER BY s.id")
+    @Query("SELECT s FROM Scoreboard s ORDER BY s.score DESC")
     List<Scoreboard> getAllSorted();
-
 }

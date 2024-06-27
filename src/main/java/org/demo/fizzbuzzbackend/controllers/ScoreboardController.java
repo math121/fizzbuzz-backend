@@ -1,17 +1,15 @@
 package org.demo.fizzbuzzbackend.controllers;
 
-import org.demo.fizzbuzzbackend.dtos.FizzBuzzDTO;
 import org.demo.fizzbuzzbackend.dtos.ScoreboardDTO;
 import org.demo.fizzbuzzbackend.models.Scoreboard;
-import org.demo.fizzbuzzbackend.services.FizzBuzzService;
 import org.demo.fizzbuzzbackend.services.ScoreboardService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/scoreboard")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ScoreboardController {
 
     private final ScoreboardService service;
@@ -21,7 +19,7 @@ public class ScoreboardController {
     }
 
     @GetMapping
-    public List<Scoreboard> getFizzBuzzNumbers() {
+    public List<Scoreboard> getScoreboard() {
         return service.getScoreboard();
     }
 

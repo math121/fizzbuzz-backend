@@ -25,15 +25,19 @@ public class ScoreboardController {
 
     @PostMapping
     public Scoreboard addScore(@RequestBody ScoreboardDTO scoreboardDTO) {
-        Scoreboard scoreboard = new Scoreboard(scoreboardDTO.userName(),
-                scoreboardDTO.time(), scoreboardDTO.score());
-        return service.addScoreboard(scoreboard);
+        Scoreboard scoreboard = new Scoreboard(scoreboardDTO.time(), scoreboardDTO.score());
+        return service.addScoreboard(scoreboardDTO.userName(), scoreboard);
     }
 
-    @PatchMapping("/{id}")
+    @GetMapping("/{name}")
+    public Scoreboard getScoreBoardForUser(@PathVariable String name) {
+        return service.getScoreboardForUser(name);
+    }
+
+    /*@PatchMapping("/{id}")
     public int updateNameOnScoreboard(@PathVariable Long id, @RequestParam String name) {
         return service.updateNameOnScoreboard(id, name);
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public void deleteScoreboard(@PathVariable Long id) {

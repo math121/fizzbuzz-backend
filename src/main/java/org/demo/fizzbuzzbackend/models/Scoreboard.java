@@ -9,12 +9,15 @@ public class Scoreboard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
     private LocalDateTime time;
     private int score;
 
-    public Scoreboard(String userName, LocalDateTime time, int score) {
-        this.userName = userName;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private FizzBuzzUser fizzBuzzUser;
+
+
+    public Scoreboard(LocalDateTime time, int score) {
         this.time = time;
         this.score = score;
     }
@@ -27,10 +30,6 @@ public class Scoreboard {
         return id;
     }
 
-    public String getUser_name() {
-        return userName;
-    }
-
     public LocalDateTime getTime() {
         return time;
     }
@@ -39,7 +38,15 @@ public class Scoreboard {
         return score;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public FizzBuzzUser getFizzBuzzUser() {
+        return fizzBuzzUser;
+    }
+
+    public void setFizzBuzzUser(FizzBuzzUser fizzBuzzUser) {
+        this.fizzBuzzUser = fizzBuzzUser;
     }
 }
